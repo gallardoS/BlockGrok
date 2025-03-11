@@ -12,8 +12,6 @@ function updateBlockedTweets() {
   let blockedCount = 0;
 
   tweets.forEach(tweet => {
-    if (tweet.dataset.checked) return;
-
     const tweetText = tweet.innerText.toLowerCase();
     const usernameElement = tweet.querySelector('a[role="link"]');
 

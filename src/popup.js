@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         li.addEventListener('click', () => removeWhitelist(username));
         whitelistList.appendChild(li);
       });
+      updateContentScript();
     });
   }
 
