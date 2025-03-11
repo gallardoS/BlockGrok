@@ -30,13 +30,23 @@ document.addEventListener('DOMContentLoaded', () => {
     chrome.storage.local.get(['whitelist'], (data) => {
       whitelistList.innerHTML = '';
       const whitelist = data.whitelist || [];
-      whitelist.forEach(username => {
-        const li = document.createElement('li');
-        li.textContent = username;
-        li.style.cursor = 'pointer';
-        li.addEventListener('click', () => removeWhitelist(username));
-        whitelistList.appendChild(li);
-      });
+
+      if (whitelist.length === 0) {
+        const emptyMessage = document.createElement('li');
+        emptyMessage.textContent = "no whitelisted users yet";
+        emptyMessage.style.color = "#888";
+        emptyMessage.style.fontStyle = "italic";
+        emptyMessage.style.textAlign = "center";
+        whitelistList.appendChild(emptyMessage);
+      } else {
+        whitelist.forEach(username => {
+          const li = document.createElement('li');
+          li.textContent = username;
+          li.style.cursor = 'pointer';
+          li.addEventListener('click', () => removeWhitelist(username));
+          whitelistList.appendChild(li);
+        });
+      }
       updateContentScript();
     });
   }
