@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>BlockGrok</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       width: 280px;
-      height: 250px;
+      height: 310px;
       padding: 15px;
       text-align: center;
       position: relative;
@@ -19,13 +20,18 @@
       font-size: 22px;
       font-weight: bold;
       border-radius: 5px;
+      margin-bottom: 5px;
+    }
+    .description {
+      font-size: 13px;
+      color: #555;
       margin-bottom: 10px;
     }
     .toggle-container {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 15px;
+      margin-top: 10px;
     }
     .toggle-switch {
       position: relative;
@@ -91,17 +97,30 @@
       cursor: pointer;
       padding: 3px 0;
     }
-    .disclaimer {
-      position: absolute;
-      bottom: 5px;
-      right: 5px;
-      font-size: 11px;
-      color: #888;
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #666;
+    }
+    .footer a {
+      text-decoration: none;
+      color: #007bff;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    .version {
+      font-weight: 600;
+      display: block;
+      margin-top: 10px;
+      padding-bottom: 10px;
     }
   </style>
 </head>
 <body>
   <div class="banner">BlockGrok</div>
+
+  <div class="description">hides tweets mentioning @grok on X</div>
 
   <div class="toggle-container">
     <label class="toggle-switch">
@@ -112,14 +131,15 @@
   </div>
 
   <div class="whitelist-section">
-    <h4>Whitelist Users</h4>
+    <h4>📋 Whitelist </h4>
     <input type="text" id="whitelist-input" placeholder="Add @username">
     <button id="add-whitelist">Add</button>
     <ul id="whitelist-list" class="whitelist-list"></ul>
   </div>
 
-  <div class="disclaimer">
-    Bugs/feedback: <a href="https://x.com/swamigallardo" target="_blank">@swamigallardo</a>
+  <div class="footer">
+    <a href="https://ko-fi.com/swamigallardo" target="_blank">☕ Support on Ko-fi</a>
+    <span id="version" class="version">v...</span>
   </div>
 
   <script src="popup.js"></script>

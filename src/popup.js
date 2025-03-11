@@ -4,17 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const whitelistInput = document.getElementById('whitelist-input');
   const addWhitelistBtn = document.getElementById('add-whitelist');
   const whitelistList = document.getElementById('whitelist-list');
-  const tabs = document.querySelectorAll('.tab');
-  const tabContents = document.querySelectorAll('.tab-content');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tabContents.forEach(c => c.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById(tab.dataset.tab).classList.add('active');
-    });
-  });
+  const versionElement = document.getElementById('version');
 
   function addUserToWhitelist() {
     let username = whitelistInput.value.trim();
@@ -95,4 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+  chrome.runtime.getManifest && versionElement && (versionElement.textContent = `v${chrome.runtime.getManifest().version}`);
 });
