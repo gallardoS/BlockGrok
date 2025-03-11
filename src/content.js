@@ -3,7 +3,7 @@ let whitelist = [];
 
 chrome.storage.local.get(['isHidden', 'whitelist'], (data) => {
   isHidden = data.isHidden !== false;
-  whitelist = data.whitelist || [];
+  whitelist = (data.whitelist || []).map(user => user.toLowerCase());
   updateBlockedTweets();
 });
 
@@ -19,10 +19,10 @@ function updateBlockedTweets() {
 
     if (!usernameElement) return;
 
-    let username = usernameElement.innerText.trim();
-    if (!username.startsWith('@')) {
-      username = '@' + username;
-    }
+    let username = usernameElement.getAttribute('href');
+    if (!username) return;
+
+    username = '@' + username.split('/').pop().toLowerCase();
 
     if (whitelist.includes(username)) {
       tweet.style.display = '';
@@ -51,22 +51,18 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     let blockedCount = 0;
     document.querySelectorAll('[data-grok-tweet="true"]').forEach(tweet => {
-      if (isHidden && !whitelist.includes(tweet.dataset.username)) {
-        tweet.style.display = 'none';
-        blockedCount++;
-      } else {
-        tweet.style.display = '';
-      }
+      tweet.style.display = isHidden ? 'none' : '';
+      if (isHidden) blockedCount++;
     });
 
     chrome.runtime.sendMessage({ action: 'updateBlockedCount', count: blockedCount });
     sendResponse({ isHidden });
   } else if (request.action === 'getStatus') {
-    const currentBlocked = document.querySelectorAll('[data-grok-tweet="true"]:not([data-checked])').length;
+    const currentBlocked = document.querySelectorAll('[data-grok-tweet="true"]:not([style*="display: none"])').length;
     sendResponse({ isHidden, currentBlocked });
   } else if (request.action === 'updateWhitelist') {
     chrome.storage.local.get(['whitelist'], (data) => {
-      whitelist = data.whitelist || [];
+      whitelist = (data.whitelist || []).map(user => user.toLowerCase());
       updateBlockedTweets();
     });
   }

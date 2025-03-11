@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       chrome.storage.local.get(['whitelist'], (data) => {
-        let whitelist = data.whitelist || [];
+        const whitelist = data.whitelist || [];
         if (!whitelist.includes(username)) {
           whitelist.push(username);
           chrome.storage.local.set({ whitelist }, () => {
