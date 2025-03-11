@@ -21,34 +21,11 @@
       border-radius: 5px;
       margin-bottom: 10px;
     }
-    .tabs {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 10px;
-      border-bottom: 2px solid #ccc;
-    }
-    .tab {
-      padding: 8px 12px;
-      cursor: pointer;
-      font-weight: bold;
-      color: #666;
-    }
-    .tab.active {
-      color: #000;
-      border-bottom: 2px solid #1DA1F2;
-    }
-    .tab-content {
-      display: none;
-      padding-top: 10px;
-    }
-    .tab-content.active {
-      display: block;
-    }
     .toggle-container {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 10px;
+      margin-top: 15px;
     }
     .toggle-switch {
       position: relative;
@@ -73,7 +50,7 @@
       background-color: #4caf50;
     }
     .toggle-switch input:not(:checked) + .slider {
-      background-color: #f44336; 
+      background-color: #f44336;
     }
     .slider::before {
       position: absolute;
@@ -94,6 +71,26 @@
     .slider.round::before {
       border-radius: 50%;
     }
+    .whitelist-section {
+      margin-top: 15px;
+    }
+    .whitelist-section input {
+      width: 70%;
+      padding: 5px;
+      margin-bottom: 5px;
+    }
+    .whitelist-list {
+      font-size: 12px;
+      text-align: left;
+      max-height: 70px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 5px;
+    }
+    .whitelist-list li {
+      cursor: pointer;
+      padding: 3px 0;
+    }
     .disclaimer {
       position: absolute;
       bottom: 5px;
@@ -106,23 +103,15 @@
 <body>
   <div class="banner">BlockGrok</div>
 
-  <div class="tabs">
-    <div class="tab active" data-tab="muting">Muting</div>
-    <div class="tab" data-tab="whitelist">Whitelist</div>
+  <div class="toggle-container">
+    <label class="toggle-switch">
+      <input type="checkbox" id="toggle" checked>
+      <span class="slider round"></span>
+    </label>
+    <span id="toggle-status">Muting</span>
   </div>
 
-  <div id="muting" class="tab-content active">
-    <h3>Blocked on this page: <span id="current-count">0</span></h3>
-    <div class="toggle-container">
-      <label class="toggle-switch">
-        <input type="checkbox" id="toggle" checked>
-        <span class="slider round"></span>
-      </label>
-      <span id="toggle-status">Muting</span>
-    </div>
-  </div>
-
-  <div id="whitelist" class="tab-content">
+  <div class="whitelist-section">
     <h4>Whitelist Users</h4>
     <input type="text" id="whitelist-input" placeholder="Add @username">
     <button id="add-whitelist">Add</button>

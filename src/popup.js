@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const currentCount = document.getElementById('current-count');
   const toggle = document.getElementById('toggle');
   const statusText = document.getElementById('toggle-status');
   const whitelistInput = document.getElementById('whitelist-input');
@@ -8,15 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabs = document.querySelectorAll('.tab');
   const tabContents = document.querySelectorAll('.tab-content');
 
-  function updateCount(count) {
-    currentCount.textContent = count;
-  }
-
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => t.classList.remove('active'));
       tabContents.forEach(c => c.classList.remove('active'));
-
       tab.classList.add('active');
       document.getElementById(tab.dataset.tab).classList.add('active');
     });
@@ -24,12 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function addUserToWhitelist() {
     let username = whitelistInput.value.trim();
-
     if (username.length > 0) {
       if (!username.startsWith('@')) {
         username = '@' + username;
       }
-
       chrome.storage.local.get(['whitelist'], (data) => {
         const whitelist = data.whitelist || [];
         if (!whitelist.includes(username)) {
@@ -40,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
           });
         }
       });
-
       whitelistInput.value = '';
     }
   }
@@ -86,16 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadWhitelist();
 
-  chrome.runtime.onMessage.addListener((request) => {
-    if (request.action === 'updateBlockedCount') {
-      updateCount(request.count);
-    }
-  });
-
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     chrome.tabs.sendMessage(tabs[0].id, { action: 'getStatus' }, (response) => {
       if (response) {
-        updateCount(response.currentBlocked || 0);
         toggle.checked = response.isHidden;
         statusText.textContent = response.isHidden ? 'Muting' : 'Showing';
       }
