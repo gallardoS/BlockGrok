@@ -8,7 +8,7 @@
     body {
       font-family: 'Poppins', sans-serif;
       width: 280px;
-      height: 310px;
+      height: 320px;
       padding: 15px;
       text-align: center;
       position: relative;
@@ -29,15 +29,16 @@
     }
     .toggle-container {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      margin-top: 10px;
+      justify-content: right;
+      margin-top: 15px;
     }
     .toggle-switch {
       position: relative;
       width: 50px;
       height: 25px;
-      margin-right: 10px;
+      margin-bottom: 5px;
     }
     .toggle-switch input {
       opacity: 0;
@@ -56,7 +57,7 @@
       background-color: #4caf50;
     }
     .toggle-switch input:not(:checked) + .slider {
-      background-color: #f44336;
+      background-color: #888;
     }
     .slider::before {
       position: absolute;
@@ -76,6 +77,11 @@
     }
     .slider.round::before {
       border-radius: 50%;
+    }
+    .toggle-status {
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 5px;
     }
     .whitelist-section {
       margin-top: 15px;
@@ -127,9 +133,8 @@
       <input type="checkbox" id="toggle" checked>
       <span class="slider round"></span>
     </label>
-    <span id="toggle-status">Muting</span>
   </div>
-
+  <hr>
   <div class="whitelist-section">
     <h4>📋 Whitelist </h4>
     <input type="text" id="whitelist-input" placeholder="Add @username">

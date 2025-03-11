@@ -1,10 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('toggle');
   const statusText = document.getElementById('toggle-status');
+  const slider = document.querySelector('.slider');
   const whitelistInput = document.getElementById('whitelist-input');
   const addWhitelistBtn = document.getElementById('add-whitelist');
   const whitelistList = document.getElementById('whitelist-list');
   const versionElement = document.getElementById('version');
+
+  function updateToggleUI(isHidden) {
+    statusText.textContent = isHidden ? '❌ Muting @grok' : '👁️ Showing @grok';
+    slider.style.backgroundColor = isHidden ? '#4caf50' : '#888';
+  }
 
   function addUserToWhitelist() {
     let username = whitelistInput.value.trim();
@@ -82,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     chrome.tabs.sendMessage(tabs[0].id, { action: 'getStatus' }, (response) => {
       if (response) {
         toggle.checked = response.isHidden;
-        statusText.textContent = response.isHidden ? 'Muting' : 'Showing';
+        updateToggleUI(response.isHidden);
       }
     });
   });
@@ -91,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       chrome.tabs.sendMessage(tabs[0].id, { action: 'toggleTweets' }, (response) => {
         if (response) {
-          statusText.textContent = response.isHidden ? 'Muting' : 'Showing';
+          updateToggleUI(response.isHidden);
         }
       });
     });
