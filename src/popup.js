@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('toggle');
-  const statusText = document.getElementById('toggle-status');
   const slider = document.querySelector('.slider');
   const whitelistInput = document.getElementById('whitelist-input');
   const addWhitelistBtn = document.getElementById('add-whitelist');
@@ -8,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const versionElement = document.getElementById('version');
 
   function updateToggleUI(isHidden) {
-    statusText.textContent = isHidden ? '❌ Muting @grok' : '👁️ Showing @grok';
     slider.style.backgroundColor = isHidden ? '#4caf50' : '#888';
   }
 
