@@ -1,8 +1,8 @@
-# BlockGrok Chrome Extension
+# muteAI Chrome Extension
 
-BlockGrok is a Chrome extension that automatically hides tweets mentioning `@grok` on X (formerly Twitter). It also provides a whitelist feature to exclude specific users from being affected by the filtering.
+**muteAI** is a Chrome extension that automatically hides tweets from AI-generated accounts on X (formerly Twitter). It uses a predefined list of AI-generated accounts to filter out their tweets from your timeline.
 
-- Automatically hides tweets containing `@grok`.
+- Automatically hides tweets from/containing mentions to AI-generated accounts (currently `@grok`).
 - Toggle between **Muting** (hiding tweets) and **Showing** (revealing tweets).
 - Whitelist users whose tweets should not be blocked, even if they mention `@grok`.
 - Persistent settings stored using `chrome.storage.local`.
@@ -11,7 +11,7 @@ BlockGrok is a Chrome extension that automatically hides tweets mentioning `@gro
 ### Muting Tweets
 - Click on the extension icon to open the popup.
 - The toggle switch allows you to enable or disable **Muting**.
-- The extension will automatically hide tweets mentioning `@grok`.
+- The extension will automatically hide tweets mentioning AI accounts.
 
 ### Managing the Whitelist
 
@@ -21,13 +21,17 @@ BlockGrok is a Chrome extension that automatically hides tweets mentioning `@gro
 
 ### Real-time Updates
 - The extension updates in real time without requiring a page reload.
+- The list of AI-generated accounts is periodically refreshed.
+
+## AI Accounts List
+The list of AI-generated accounts is stored in [`ai-accounts.json`](https://github.com/gallardoS/BlockGrok/blob/main/src/ai-accounts.json). The extension automatically loads and applies this list when filtering tweets.
 
 ## Installation
 1. Download or clone this repository.
 2. Open **Chrome** and go to `chrome://extensions/`.
 3. Enable **Developer mode** (toggle switch at the top-right).
 4. Click **Load unpacked** and select the `src` folder.
-5. The BlockGrok extension should now be visible in your Chrome extensions bar.
+5. The **muteAI** extension should now be visible in your Chrome extensions bar.
 
 ## Permissions
 - **Storage:** Saves user settings (whitelist, toggle state).
