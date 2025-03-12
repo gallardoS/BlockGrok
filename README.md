@@ -2,6 +2,8 @@
 
 **muteAI** is a Chrome extension that automatically hides tweets from AI-generated accounts on X (formerly Twitter). It uses a predefined list of AI-generated accounts to filter out their tweets from your timeline.
 
+![](https://github.com/gallardoS/BlockGrok/blob/main/resources/toggle.gif)
+
 - Automatically hides tweets from/containing mentions to AI-generated accounts (like `@grok` or `@AskPerplexity` ).
 - Toggle between **Muting** (hiding tweets) and **Showing** (revealing tweets).
 - Whitelist users whose tweets should not be blocked, even if they mention them.
@@ -14,6 +16,8 @@
 - The extension will automatically hide tweets mentioning AI accounts.
 
 ### Managing the Whitelist
+
+![](https://github.com/gallardoS/BlockGrok/blob/main/resources/whitelist.gif)
 
 - Add users by entering their `@username` (if `@` is missing, it will be added automatically).
 - Click **Add** or press **Enter** to whitelist a user.
