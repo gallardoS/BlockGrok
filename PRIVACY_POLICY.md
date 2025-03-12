@@ -1,6 +1,6 @@
-# Privacy Policy - BlockGrok
+# Privacy Policy - MuteAI
 
-BlockGrok is a Chrome extension that modifies the appearance of tweets mentioning @grok on Twitter/X. This extension operates entirely within the user's browser and does not collect, store, transmit, or share any personal data.
+MuteAI is a Chrome extension that automatically hides tweets from AI-generated accounts on Twitter/X. The extension operates entirely within the user's browser and does not collect, store, transmit, or share any personal data.
 
 ## Data Collection
 - BlockGrok does not track, log, or store any user activity.

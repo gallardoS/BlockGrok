@@ -1,8 +1,8 @@
 {
-  "manifest_version": 3,
-  "name": "BlockGrok",
-  "version": "0.8",
-  "description": "Automatically hides tweets mentioning @grok on X, displays count, and allows toggling visibility.",
+  "manifest_version": 4,
+  "name": "muteAI",
+  "version": "0.9",
+  "description": "Automatically hides tweets mentioning AI accounts on X, manage whitelisted users, and allows toggling visibility.",
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icon128.png"
