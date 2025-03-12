@@ -1,12 +1,23 @@
 let isHidden = true;
 let whitelist = [];
+let blockedTerms = new Set();
 
-const blockedTerms = new Set(['@grok', '@grok2'].map(term => term.toLowerCase()));
+async function loadBlockedTerms() {
+  try {
+    const response = await fetch(chrome.runtime.getURL('ai-accounts.json'));
+    const data = await response.json();
+    blockedTerms = new Set(data.accounts.map(term => term.toLowerCase()));
+    console.log("ai-accounts.json loaded: ", blockedTerms)
+    updateBlockedTweets();
+  } catch (error) {
+    console.error('Error getting ai-accounts.json:', error);
+  }
+}
 
 chrome.storage.local.get(['isHidden', 'whitelist'], (data) => {
   isHidden = data.isHidden !== false;
   whitelist = (data.whitelist || []).map(user => user.toLowerCase());
-  updateBlockedTweets();
+  loadBlockedTerms();
 });
 
 function containsBlockedTerm(tweetText) {
