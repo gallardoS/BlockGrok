@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "muteAI",
-  "version": "0.9",
+  "version": "1.0",
   "description": "Automatically hides tweets mentioning AI accounts on X, manage whitelisted users, and allows toggling visibility.",
   "action": {
     "default_popup": "popup.html",
@@ -17,7 +17,7 @@
       "run_at": "document_end"
     }
   ],
-  "permissions": ["storage", "activeTab", "scripting"],
+  "permissions": ["storage", "activeTab"],
   "web_accessible_resources": [
     {
       "resources": ["ai-accounts.json"],

@@ -41,7 +41,7 @@ The list of AI-generated accounts is stored in [`ai-accounts.json`](https://gith
 
 ## Permissions
 - **Storage:** Saves user settings (whitelist, toggle state).
-- **Active Tab & Scripting:** Allows modifying the webpage to hide tweets.
+- **Active Tab:** Allows interaction with the current tab for hiding tweets.
 
 ## Troubleshooting
 - If the extension does not work, try refreshing the page.

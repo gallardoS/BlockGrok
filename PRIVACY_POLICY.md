@@ -11,7 +11,6 @@ MuteAI is a Chrome extension that automatically hides tweets from AI-generated a
 MuteAI requires the following Chrome permissions:
 - **`storage`** - To save user preferences (e.g., whitelist and toggle state).
 - **`activeTab`** - To modify the content of the currently open Twitter/X tab when activated.
-- **`scripting`** - To inject scripts that hide tweets mentioning AI accounts.
 - **`content_scripts`** - To apply the tweet-filtering functionality on Twitter/X.
 
 These permissions are strictly used for the core functionality of the extension and do not involve any form of data collection or tracking.
